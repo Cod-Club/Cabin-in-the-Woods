@@ -17,4 +17,4 @@ A hermit survives the harsh winter in the woods.
 
 ## Contact Us
 
-Zac Hart: (Miyagi@Discord)[https://discordapp.com/users/1106945312158908487]
+Zac Hart: [Miyagi@Discord](https://discordapp.com/users/1106945312158908487)
