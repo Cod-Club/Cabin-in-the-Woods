@@ -20,7 +20,6 @@ public class Door : MonoBehaviour
     {
         if (other.GetComponent<PlayerMovement>() != null)
         {
-            gameManager.sceneToLoad = null;
             gameManager.ui.transform.Find("OpenDoor").gameObject.SetActive(false);
         }
     }
