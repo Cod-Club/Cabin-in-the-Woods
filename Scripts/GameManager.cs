@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [HideInInspector] public string sceneToLoad;
+    [HideInInspector]
+    public string sceneToLoad;
     FadeInOut fadeInOut;
     public GameObject ui;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,10 +17,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-
-    }
+    void Update() { }
 
     public void OpenDoor()
     {

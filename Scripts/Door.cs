@@ -5,8 +5,10 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public string sceneToLoad;
+
     [Space]
     public GameManager gameManager;
+
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.GetComponent<PlayerMovement>() != null)

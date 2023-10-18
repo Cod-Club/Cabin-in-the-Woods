@@ -8,11 +8,9 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed = 40f;
 
     float horizontalMove = 0f;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
+    // Start is called before the first frame update
+    void Start() { }
 
     // Update is called once per frame
     void Update()
@@ -22,6 +20,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        controller.Move(horizontalMove * Time.fixedDeltaTime, Input.GetKey(KeyCode.LeftControl), Input.GetKey(KeyCode.Space));
+        controller.Move(
+            horizontalMove * Time.fixedDeltaTime,
+            Input.GetKey(KeyCode.LeftControl),
+            Input.GetKey(KeyCode.Space)
+        );
     }
 }
