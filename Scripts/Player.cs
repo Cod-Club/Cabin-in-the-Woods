@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,40 +18,31 @@ public class Player : MonoBehaviour
     public float healthBarEndOffset = 144f;
 
     [Space]
+    public int startHealth;
+
     [HideInInspector]
     public float health;
-    public float startHealth = 100f;
-    int inventorySlots;
-    int slot = 0;
+    int inventorySlotAmount;
+    int slotIndex = 0;
     public Transform Slots;
 
-    Dictionary<int, KeyCode> dict;
-    KeyCode _1 = KeyCode.Alpha1;
-    KeyCode _2 = KeyCode.Alpha2;
-    KeyCode _3 = KeyCode.Alpha3;
-    KeyCode _4 = KeyCode.Alpha4;
-    KeyCode _5 = KeyCode.Alpha5;
-    KeyCode _6 = KeyCode.Alpha6;
+    KeyCode[] inventoryKeycodes =
+    {
+        KeyCode.Alpha1,
+        KeyCode.Alpha2,
+        KeyCode.Alpha3,
+        KeyCode.Alpha4,
+        KeyCode.Alpha5,
+        KeyCode.Alpha6
+    };
 
     // Start is called before the first frame update
     void Start()
     {
-        health = startHealth;
-        ui = gameManager.ui.transform;
         healthBar = ui.Find("Health/health");
-        healthBarEndPos = new Vector3(-healthBarEndOffset, 0, 0);
+        healthBarEndPos = new Vector2(-healthBarEndOffset, 0);
 
-        dict = new Dictionary<int, KeyCode>()
-        {
-            { 0, _1 },
-            { 1, _2 },
-            { 2, _3 },
-            { 3, _4 },
-            { 4, _5 },
-            { 5, _6 },
-        };
-
-        inventorySlots = Slots.childCount;
+        inventorySlotAmount = Slots.childCount;
     }
 
     // Update is called once per frame
@@ -62,35 +54,30 @@ public class Player : MonoBehaviour
             health / startHealth
         );
 
-        Inventory();
+        UpdateActiveInventorySlot();
     }
 
-    void Inventory()
+    void UpdateActiveInventorySlot()
     {
-        Debug.Log(dict[slot]);
-        for (int i = 0; i < inventorySlots; i++)
+        Debug.Log(inventoryKeycodes[slotIndex]);
+        for (int i = 0; i < inventorySlotAmount; i++)
         {
-            if (Input.GetKeyDown(dict[i]))
-                slot = i;
+            if (Input.GetKeyDown(inventoryKeycodes[i]))
+            {
+                slotIndex = i;
+                break;
+            }
         }
 
-        if (Input.mouseScrollDelta.y < 0)
-        {
-            slot++;
-        }
-        if (Input.mouseScrollDelta.y > 0)
-        {
-            slot--;
-        }
-
-        if (slot < 0)
-            slot = inventorySlots - 1;
-        if (slot >= inventorySlots)
-            slot = 0;
+        slotIndex =
+            (slotIndex + Math.Sign(Input.mouseScrollDelta.y))
+            % inventorySlotAmount;
 
         foreach (Transform newSlot in Slots)
         {
-            newSlot.gameObject.SetActive(newSlot.gameObject.name == slot.ToString());
+            newSlot.gameObject.SetActive(
+                newSlot.gameObject.name == slotIndex.ToString()
+            );
         }
     }
 
