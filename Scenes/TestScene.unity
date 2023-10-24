@@ -6890,6 +6890,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.26549053
       objectReference: {fileID: 0}
+    - target: {fileID: 8087540957632280618, guid: b03c0bc8815f0dc47b1f507208fd4b29, type: 3}
+      propertyPath: runSpeed
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 8087540957632280628, guid: b03c0bc8815f0dc47b1f507208fd4b29, type: 3}
       propertyPath: m_Name
       value: KindaTrashPlayer
