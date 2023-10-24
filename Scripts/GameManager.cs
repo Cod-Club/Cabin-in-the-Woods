@@ -23,15 +23,14 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("clicked button");
         fadeInOut.fadeIn = true;
-        fadeInOut.timer = 0f;
+        fadeInOut.t = 0f;
         if (sceneToLoad == null)
         {
             Debug.LogError("No scene to load on door");
-            return;
         }
         fadeInOut.Fade();
 
-        Invoke("LoadScene", fadeInOut.fadeTime);
+        Invoke("LoadScene", fadeInOut.fadeDuration);
     }
 
     void LoadScene()
