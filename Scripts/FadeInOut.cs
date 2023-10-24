@@ -27,7 +27,7 @@ public class FadeInOut : MonoBehaviour
 
     public void Fade()
     {
-        panelImg.color = new Color(0, 0, t / fadeDuration);
+        panelImg.color = new Color(0, 0, 0, fadeIn ? t / fadeDuration : 1 - t / fadeDuration);
 
         finished = t >= fadeDuration;
     }

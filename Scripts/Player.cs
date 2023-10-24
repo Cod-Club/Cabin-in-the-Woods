@@ -39,10 +39,12 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ui = gameManager.ui;
         healthBar = ui.Find("Health/health");
         healthBarEndPos = new Vector2(-healthBarEndOffset, 0);
 
         inventorySlotAmount = Slots.childCount;
+        health = startHealth;
     }
 
     // Update is called once per frame
@@ -70,7 +72,7 @@ public class Player : MonoBehaviour
         }
 
         slotIndex =
-            (slotIndex + Math.Sign(Input.mouseScrollDelta.y))
+            (inventorySlotAmount+slotIndex - Math.Sign(Input.mouseScrollDelta.y))
             % inventorySlotAmount;
 
         foreach (Transform newSlot in Slots)

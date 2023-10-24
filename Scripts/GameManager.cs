@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public string sceneToLoad;
     FadeInOut fadeInOut;
-    public GameObject ui;
+    public Transform ui;
 
     // Start is called before the first frame update
     void Start()
