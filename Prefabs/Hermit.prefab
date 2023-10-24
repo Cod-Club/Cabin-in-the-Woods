@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -6304076104463454264}
   - component: {fileID: 1835556166}
   - component: {fileID: 1835556167}
+  - component: {fileID: 1835556168}
   m_Layer: 0
   m_Name: Hermit
   m_TagString: Untagged
@@ -121,8 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709f71f9f841eb24e883925377cc5056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 200
-  rb: {fileID: 0}
+  controller: {fileID: 0}
+  runSpeed: 4
 --- !u!70 &1835556166
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -158,3 +159,16 @@ MonoBehaviour:
   startHealth: 100
   health: 0
   Slots: {fileID: 0}
+--- !u!114 &1835556168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3174303273635557739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f2755d8fcadae649b2a64fe86bd4303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MovementSmoothing: 0.05

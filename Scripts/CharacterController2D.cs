@@ -29,6 +29,6 @@ public class CharacterController2D : MonoBehaviour
             m_MovementSmoothing
         );
 
-        transform.localScale *= Math.Sign(move);
+        transform.localScale = new Vector3(Mathf.Sign(move), 1, 1);
     }
 }
