@@ -61,7 +61,6 @@ public class Player : MonoBehaviour
 
     void UpdateActiveInventorySlot()
     {
-        Debug.Log(inventoryKeycodes[slotIndex]);
         for (int i = 0; i < inventorySlotAmount; i++)
         {
             if (Input.GetKeyDown(inventoryKeycodes[i]))

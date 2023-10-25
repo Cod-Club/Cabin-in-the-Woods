@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
-  runSpeed: 4
+  runSpeed: 2
 --- !u!70 &1835556166
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -171,4 +171,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f2755d8fcadae649b2a64fe86bd4303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovementSmoothing: 0.05
+  m_MovementSmoothing: 0.1
