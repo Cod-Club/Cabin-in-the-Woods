@@ -14,7 +14,9 @@ public class Door : MonoBehaviour
         if (other.GetComponent<PlayerMovement>() != null)
         {
             gameManager.sceneToLoad = sceneToLoad;
-            gameManager.ui.transform.Find("OpenDoor").gameObject.SetActive(true);
+            gameManager.ui.transform
+                .Find("OpenDoor")
+                .gameObject.SetActive(true);
         }
     }
 
@@ -22,7 +24,9 @@ public class Door : MonoBehaviour
     {
         if (other.GetComponent<PlayerMovement>() != null)
         {
-            gameManager.ui.transform.Find("OpenDoor").gameObject.SetActive(false);
+            gameManager.ui.transform
+                .Find("OpenDoor")
+                .gameObject.SetActive(false);
         }
     }
 }
