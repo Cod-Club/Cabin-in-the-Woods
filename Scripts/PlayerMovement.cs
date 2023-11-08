@@ -22,5 +22,4 @@ public class PlayerMovement : MonoBehaviour
         if (horizontalMove != 0)
             controller.Move(horizontalMove * Time.deltaTime * 100f);
     }
-
 }

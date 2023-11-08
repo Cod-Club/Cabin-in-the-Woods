@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    [HideInInspector]
     public GameManager gameManager;
 
     [HideInInspector]
@@ -71,8 +72,11 @@ public class Player : MonoBehaviour
         }
 
         slotIndex =
-            (inventorySlotAmount+slotIndex - Math.Sign(Input.mouseScrollDelta.y))
-            % inventorySlotAmount;
+            (
+                inventorySlotAmount
+                + slotIndex
+                - Math.Sign(Input.mouseScrollDelta.y)
+            ) % inventorySlotAmount;
 
         foreach (Transform newSlot in Slots)
         {
