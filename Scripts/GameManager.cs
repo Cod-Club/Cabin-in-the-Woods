@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour
     public string sceneToLoad;
     FadeInOut fadeInOut;
     public Transform ui;
+    public float timeOfDay = 0;
+    public float dayNum = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +20,15 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update() { }
+    void Update()
+    {
+        timeOfDay += Time.deltaTime;
+        if (timeOfDay >= 1200)
+        {
+            timeOfDay = 0;
+            dayNum++;
+        }
+    }
 
     public void OpenDoor()
     {
