@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    [HideInInspector]
     public GameManager gameManager;
 
     [HideInInspector]
@@ -20,6 +19,9 @@ public class Player : MonoBehaviour
 
     [Space]
     public int startHealth;
+
+    [HideInInspector] 
+    public Transform interactableItem;
 
     [HideInInspector]
     public float health;
@@ -51,13 +53,22 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(interactableItem != null){
+            if(Input.GetKeyDown(KeyCode.E)){
+                //put item into inventory
+            }
+        }
+
+        SetHealth();
+        UpdateActiveInventorySlot();
+    }
+
+    void SetHealth(){
         healthBar.localPosition = Vector3.Lerp(
             healthBarEndPos,
             healthBarStartPos,
             health / startHealth
         );
-
-        UpdateActiveInventorySlot();
     }
 
     void UpdateActiveInventorySlot()
