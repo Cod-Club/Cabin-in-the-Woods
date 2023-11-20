@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    [HideInInspector]
     public GameManager gameManager;
 
     [HideInInspector]
@@ -23,11 +22,17 @@ public class Player : MonoBehaviour
 
     [HideInInspector]
     public float health;
-    int inventorySlotAmount;
-    int slotIndex = 0;
-    public Transform Slots;
 
-    KeyCode[] inventoryKeycodes =
+    [HideInInspector]
+    int inventorySlotAmount;
+
+    [HideInInspector]
+    int slotIndex = 0;
+
+    [HideInInspector]
+    public Transform slots;
+
+    readonly KeyCode[] inventoryKeycodes =
     {
         KeyCode.Alpha1,
         KeyCode.Alpha2,
@@ -43,8 +48,9 @@ public class Player : MonoBehaviour
         ui = gameManager.ui;
         healthBar = ui.Find("Health/health");
         healthBarEndPos = new Vector2(-healthBarEndOffset, 0);
+        slots = ui.Find("Inventory");
 
-        inventorySlotAmount = Slots.childCount;
+        inventorySlotAmount = slots.childCount;
         health = startHealth;
     }
 
@@ -78,7 +84,7 @@ public class Player : MonoBehaviour
                 - Math.Sign(Input.mouseScrollDelta.y)
             ) % inventorySlotAmount;
 
-        foreach (Transform newSlot in Slots)
+        foreach (Transform newSlot in slots)
         {
             newSlot.gameObject.SetActive(
                 newSlot.gameObject.name == slotIndex.ToString()
