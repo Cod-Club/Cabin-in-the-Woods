@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     [Space]
     public int startHealth;
 
-    [HideInInspector] 
+    [HideInInspector]
     public Transform interactableItem;
 
     [HideInInspector]
@@ -53,8 +53,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(interactableItem != null){
-            if(Input.GetKeyDown(KeyCode.E)){
+        if (interactableItem != null)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
                 //put item into inventory
             }
         }
@@ -63,7 +65,8 @@ public class Player : MonoBehaviour
         UpdateActiveInventorySlot();
     }
 
-    void SetHealth(){
+    void SetHealth()
+    {
         healthBar.localPosition = Vector3.Lerp(
             healthBarEndPos,
             healthBarStartPos,
