@@ -55,9 +55,18 @@ public class Player : MonoBehaviour
     {
         if (interactableItem != null)
         {
+            Debug.Log("touching item");
             if (Input.GetKeyDown(KeyCode.E))
             {
+                Debug.Log("picking up item");
                 //put item into inventory
+                Slots
+                    .Find(slotIndex.ToString())
+                    .GetComponent<Image>()
+                    .sprite = interactableItem.GetComponent<Image>().sprite;
+                interactableItem.SetParent(transform.Find("Inventory"));
+                interactableItem.localPosition = Vector3.zero;
+                interactableItem = null;
             }
         }
 
