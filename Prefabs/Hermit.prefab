@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1835556166}
   - component: {fileID: 1835556167}
   - component: {fileID: 1835556168}
+  - component: {fileID: -6399588281200847129}
   m_Layer: 0
   m_Name: Hermit
   m_TagString: Untagged
@@ -179,11 +180,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   ui: {fileID: 0}
+  inventory: {fileID: 0}
   healthBar: {fileID: 0}
   healthBarEndOffset: 144
   startHealth: 100
+  interactableItem: {fileID: 0}
   health: 0
-  Slots: {fileID: 0}
+  inventorySlots: {fileID: 0}
 --- !u!114 &1835556168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,3 +200,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MovementSmoothing: 0.1
+--- !u!114 &-6399588281200847129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3174303273635557739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00fbbd4efdc794f4c80b1731a07def9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  inventorySlots: {fileID: 0}
