@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    [HideInInspector]
+    // [HideInInspector]
     public GameManager gameManager;
 
     [HideInInspector]
@@ -48,9 +48,9 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject
-            .Find("gameManager")
-            .GetComponent<GameManager>();
+        // gameManager = GameObject
+        //     .Find("gameManager")
+        //     .GetComponent<GameManager>();
         ui = gameManager.ui;
         healthBar = ui.Find("Health/health");
         healthBarEndPos = new Vector2(-healthBarEndOffset, 0);
