@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    [HideInInspector]
     public GameManager gameManager;
+
+    [HideInInspector]
     public Transform inventorySlots;
+
+    [HideInInspector]
     Transform emptySlot;
 
     void Start()
