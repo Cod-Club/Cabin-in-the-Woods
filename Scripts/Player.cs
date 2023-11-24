@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
 
     [HideInInspector]
     public Transform ui;
+
+    [HideInInspector]
     public Inventory inventory;
 
     [HideInInspector]
@@ -53,6 +55,7 @@ public class Player : MonoBehaviour
         healthBar = ui.Find("Health/health");
         healthBarEndPos = new Vector2(-healthBarEndOffset, 0);
         inventorySlots = ui.Find("Inventory");
+        inventory = transform.GetComponent<Inventory>();
 
         inventorySlotAmount = inventorySlots.childCount;
         health = startHealth;
