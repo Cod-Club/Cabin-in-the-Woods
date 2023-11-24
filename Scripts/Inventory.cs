@@ -29,12 +29,17 @@ public class Inventory : MonoBehaviour
 
         foreach (Transform slot in inventorySlots)
         {
-            if (slot.childCount == 0)
+            if (
+                slot.GetComponent<UnityEngine.UI.Image>().sprite.name
+                == "Background"
+            )
             {
                 emptySlot = slot;
                 break;
             }
         }
+
+        Debug.Log(emptySlot.GetComponent<UnityEngine.UI.Image>().sprite.name);
     }
 
     public void AddItem(Transform item)
@@ -45,14 +50,18 @@ public class Inventory : MonoBehaviour
 
         // put item into hermits hand
         item.SetParent(transform.Find("Inventory"));
-        item.transform.localPosition = Vector3.zero;
+        item.localPosition = Vector3.zero;
 
         // remove physics of item
         Destroy(item.GetComponent<Rigidbody2D>());
         item.GetComponent<BoxCollider2D>().enabled = false;
         item.GetComponent<BoxCollider2D>().enabled = false;
 
-        emptySlot.GetComponent<UnityEngine.UI.Image>().sprite =
-            item.GetComponent<UnityEngine.UI.Image>().sprite;
+        // set image in inventory slot to item sprite
+        emptySlot.GetComponent<UnityEngine.UI.Image>().sprite = item.Find(
+                "Canvas/Image"
+            )
+            .GetComponent<UnityEngine.UI.Image>()
+            .sprite;
     }
 }
