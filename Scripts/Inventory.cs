@@ -40,8 +40,14 @@ public class Inventory : MonoBehaviour
     public void AddItem(Transform item)
     {
         getEmptySlot();
+        if (emptySlot == null)
+            return;
+
+        // put item into hermits hand
         item.SetParent(transform.Find("Inventory"));
         item.transform.localPosition = Vector3.zero;
+
+        // remove physics of item
         Destroy(item.GetComponent<Rigidbody2D>());
         item.GetComponent<BoxCollider2D>().enabled = false;
         item.GetComponent<BoxCollider2D>().enabled = false;
