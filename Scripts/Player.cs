@@ -66,6 +66,7 @@ public class Player : MonoBehaviour
     {
         if (interactableItem != null)
         {
+            Debug.Log("touching item");
             if (Input.GetKeyDown(KeyCode.E))
             {
                 inventory.AddItem(interactableItem);
