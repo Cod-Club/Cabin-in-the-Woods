@@ -6,10 +6,14 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    [HideInInspector]
     public GameManager gameManager;
 
     [HideInInspector]
     public Transform ui;
+
+    [HideInInspector]
+    public Inventory inventory;
 
     [HideInInspector]
     public Transform healthBar;
@@ -27,7 +31,9 @@ public class Player : MonoBehaviour
     public float health;
     int inventorySlotAmount;
     int slotIndex = 0;
-    public Transform Slots;
+
+    [HideInInspector]
+    public Transform inventorySlots;
 
     KeyCode[] inventoryKeycodes =
     {
@@ -42,11 +48,16 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject
+            .Find("gameManager")
+            .GetComponent<GameManager>();
         ui = gameManager.ui;
         healthBar = ui.Find("Health/health");
         healthBarEndPos = new Vector2(-healthBarEndOffset, 0);
+        inventorySlots = ui.Find("Inventory");
+        inventory = transform.GetComponent<Inventory>();
 
-        inventorySlotAmount = Slots.childCount;
+        inventorySlotAmount = inventorySlots.childCount;
         health = startHealth;
     }
 
@@ -58,15 +69,7 @@ public class Player : MonoBehaviour
             Debug.Log("touching item");
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log("picking up item");
-                //put item into inventory
-                Slots
-                    .Find(slotIndex.ToString())
-                    .GetComponent<Image>()
-                    .sprite = interactableItem.GetComponent<Image>().sprite;
-                interactableItem.SetParent(transform.Find("Inventory"));
-                interactableItem.localPosition = Vector3.zero;
-                interactableItem = null;
+                inventory.AddItem(interactableItem);
             }
         }
 
@@ -101,7 +104,7 @@ public class Player : MonoBehaviour
                 - Math.Sign(Input.mouseScrollDelta.y)
             ) % inventorySlotAmount;
 
-        foreach (Transform newSlot in Slots)
+        foreach (Transform newSlot in inventorySlots)
         {
             newSlot.gameObject.SetActive(
                 newSlot.gameObject.name == slotIndex.ToString()
