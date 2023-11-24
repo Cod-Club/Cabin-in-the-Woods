@@ -6,14 +6,14 @@ public class Door : MonoBehaviour
 {
     public string sceneToLoad;
 
-    [HideInInspector]
+    // [HideInInspector]
     public GameManager gameManager;
 
     void Start()
     {
-        gameManager = GameObject
-            .Find("gameManager")
-            .GetComponent<GameManager>();
+        // gameManager = GameObject
+        //     .Find("gameManager")
+        //     .GetComponent<GameManager>();
     }
 
     private void OnTriggerStay2D(Collider2D other)
