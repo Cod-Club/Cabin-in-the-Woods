@@ -29,8 +29,6 @@ public class Player : MonoBehaviour
 
     [HideInInspector]
     public float health;
-    int inventorySlotAmount;
-    int slotIndex = 0;
 
     [HideInInspector]
     public Transform inventorySlots;
