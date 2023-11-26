@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    // [HideInInspector]
+    [HideInInspector]
     public GameManager gameManager;
 
     [HideInInspector]
@@ -16,9 +16,9 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
-        // gameManager = GameObject
-        //     .Find("gameManager")
-        //     .GetComponent<GameManager>();
+        gameManager = GameObject
+            .Find("GameManager")
+            .GetComponent<GameManager>();
         gameManager = transform.GetComponent<Player>().gameManager;
         inventorySlots = gameManager.ui.Find("Inventory");
     }
