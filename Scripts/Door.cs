@@ -7,7 +7,7 @@ public class Door : MonoBehaviour
     public string sceneToLoad;
 
     [HideInInspector]
-    public GameManager gameManager;
+    GameManager gameManager;
 
     [HideInInspector]
     FadeInOut fadeInOut;
