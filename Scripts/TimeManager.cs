@@ -7,6 +7,8 @@ public class TimeManager : MonoBehaviour
     TextMeshProUGUI timeText;
     TextMeshProUGUI dayText;
     public int day = 1;
+    float time;
+    public int timeOfDay;
 
     // Start is called before the first frame update
     void Start()
@@ -23,10 +25,11 @@ public class TimeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int timeOfDay = (int)Mathf.Floor(Time.time);
+        time += Time.deltaTime;
+        timeOfDay = (int)Mathf.Floor(time);
         if (timeOfDay >= 1200)
         {
-            timeOfDay = 0;
+            time = 0;
             dayText.text = (++day).ToString();
         }
 
