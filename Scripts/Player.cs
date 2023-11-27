@@ -28,6 +28,9 @@ public class Player : MonoBehaviour
     public Transform interactableItem;
 
     [HideInInspector]
+    public Transform item;
+
+    [HideInInspector]
     public float health;
 
     [HideInInspector]
@@ -71,6 +74,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SetHealth();
+        UpdateActiveInventorySlot();
+
         if (interactableItem != null)
         {
             if (Input.GetKeyDown(KeyCode.E))
@@ -78,9 +84,6 @@ public class Player : MonoBehaviour
                 inventory.AddItem(interactableItem.transform);
             }
         }
-
-        SetHealth();
-        UpdateActiveInventorySlot();
     }
 
     void SetHealth()
@@ -110,11 +113,26 @@ public class Player : MonoBehaviour
                 - Math.Sign(Input.mouseScrollDelta.y)
             ) % inventorySlotAmount;
 
-        foreach (Transform newSlot in inventorySlots)
+        if (
+            transform.Find("Inventory/" + slotIndex.ToString()).childCount != 0
+        )
         {
-            newSlot.gameObject.SetActive(
-                newSlot.gameObject.name == slotIndex.ToString()
+            item = transform.Find("Inventory").GetChild(slotIndex);
+        }
+
+        foreach (Transform slot in inventorySlots)
+        {
+            slot.GetComponent<UnityEngine.UI.Image>().color = new Color(
+                255f,
+                255f,
+                255f,
+                slot.name == slotIndex.ToString() ? 1f : 0.5f
             );
+        }
+
+        foreach (Transform child in transform.Find("Inventory"))
+        {
+            child.gameObject.SetActive(child.name == slotIndex.ToString());
         }
     }
 

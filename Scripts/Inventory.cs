@@ -39,7 +39,7 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        Debug.Log(emptySlot.GetComponent<UnityEngine.UI.Image>().sprite.name);
+        // Debug.Log(emptySlot.GetComponent<UnityEngine.UI.Image>().sprite.name);
     }
 
     public void AddItem(Transform item)
@@ -49,7 +49,7 @@ public class Inventory : MonoBehaviour
             return;
 
         // put item into hermits hand
-        item.SetParent(transform.Find("Inventory"));
+        item.SetParent(transform.Find("Inventory/" + emptySlot.name));
         item.localPosition = Vector3.zero;
 
         // remove physics of item
