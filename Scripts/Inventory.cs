@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     [HideInInspector]
-    public GameManager gameManager;
+    GameManager gameManager;
 
     [HideInInspector]
     public Transform inventorySlots;
@@ -23,7 +23,7 @@ public class Inventory : MonoBehaviour
         inventorySlots = gameManager.ui.Find("Inventory");
     }
 
-    private void getEmptySlot()
+    private void GetEmptySlot()
     {
         emptySlot = null;
 
@@ -44,7 +44,7 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(Transform item)
     {
-        getEmptySlot();
+        GetEmptySlot();
         if (emptySlot == null)
             return;
 

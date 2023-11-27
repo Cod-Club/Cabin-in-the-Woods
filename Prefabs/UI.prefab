@@ -882,7 +882,6 @@ GameObject:
   - component: {fileID: 2978913986027474544}
   - component: {fileID: 2978913986027474551}
   - component: {fileID: 2978913986027474550}
-  - component: {fileID: 2978913986027474545}
   m_Layer: 5
   m_Name: FadePanel
   m_TagString: Untagged
@@ -948,23 +947,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2978913986027474545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2978913986027474547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1938a43ae6dd78a499162fd74995cfe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panel: {fileID: 2978913986027474544}
-  fadeDuration: 0.7
-  fadeIn: 0
-  t: 0
-  finished: 0
 --- !u!1 &2978913986724510390
 GameObject:
   m_ObjectHideFlags: 0
