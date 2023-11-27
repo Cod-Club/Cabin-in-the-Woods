@@ -9,21 +9,32 @@ public class Door : MonoBehaviour
     [HideInInspector]
     public GameManager gameManager;
 
+    [HideInInspector]
+    FadeInOut fadeInOut;
+
+    [HideInInspector]
+    GameObject door;
+
     void Start()
     {
         gameManager = GameObject
             .Find("GameManager")
             .GetComponent<GameManager>();
+        fadeInOut = gameManager.GetComponent<FadeInOut>();
+        door = gameManager.ui.Find("OpenDoor").gameObject;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && door.activeSelf)
+            OpenDoor();
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.GetComponent<PlayerMovement>() != null)
         {
-            gameManager.sceneToLoad = sceneToLoad;
-            gameManager.ui.transform
-                .Find("OpenDoor")
-                .gameObject.SetActive(true);
+            door.SetActive(true);
         }
     }
 
@@ -31,9 +42,22 @@ public class Door : MonoBehaviour
     {
         if (other.GetComponent<PlayerMovement>() != null)
         {
-            gameManager.ui.transform
-                .Find("OpenDoor")
-                .gameObject.SetActive(false);
+            door.SetActive(false);
         }
+    }
+
+    public void OpenDoor()
+    {
+        if (sceneToLoad == null)
+        {
+            Debug.LogError("No scene to load on door");
+        }
+
+        fadeInOut.fadeIn = true;
+        fadeInOut.ResetFade();
+        fadeInOut.Fade();
+
+        gameManager.sceneToLoad = sceneToLoad;
+        gameManager.Invoke("LoadScene", fadeInOut.fadeDuration);
     }
 }

@@ -27,19 +27,28 @@ public class FadeInOut : MonoBehaviour
 
     public void Fade()
     {
-        panelImg.color = new Color(
-            0,
-            0,
-            0,
-            fadeIn ? t / fadeDuration : 1 - t / fadeDuration
-        );
+        if (!finished)
+        {
+            panelImg.color = new Color(
+                0,
+                0,
+                0,
+                fadeIn ? t / fadeDuration : 1 - t / fadeDuration
+            );
 
-        finished = t >= fadeDuration;
+            t += Time.deltaTime;
+            finished = t >= fadeDuration;
+        }
+    }
+
+    public void ResetFade()
+    {
+        t = 0;
+        finished = false;
     }
 
     void Update()
     {
         Fade();
-        t += Time.deltaTime;
     }
 }
