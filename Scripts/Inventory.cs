@@ -9,22 +9,27 @@ public class Inventory : MonoBehaviour
     GameManager gameManager;
 
     [HideInInspector]
-    public Transform inventorySlots;
+    public Transform uiInventory;
+    public Transform playerInventory;
 
     [HideInInspector]
     Transform emptySlot;
 
+    [SerializeField]
+    UnityEngine.UI.Image defaultImage;
+
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
-        inventorySlots = gameManager.ui.Find("Inventory");
+        uiInventory = gameManager.ui.Find("Inventory");
+        playerInventory = transform.Find("Inventory");
     }
 
     private void GetEmptySlot()
     {
         emptySlot = null;
 
-        foreach (Transform slot in inventorySlots)
+        foreach (Transform slot in uiInventory)
         {
             if (
                 slot.GetComponent<UnityEngine.UI.Image>().sprite.name
@@ -46,7 +51,7 @@ public class Inventory : MonoBehaviour
             return;
 
         // put item into hermits hand
-        item.SetParent(transform.Find("Inventory/" + emptySlot.name));
+        item.SetParent(playerInventory.Find(emptySlot.name));
         item.localPosition = Vector3.zero;
 
         // remove physics of item
@@ -60,5 +65,15 @@ public class Inventory : MonoBehaviour
             )
             .GetComponent<UnityEngine.UI.Image>()
             .sprite;
+    }
+
+    public void RemoveItem(int slotIndex)
+    {
+        uiInventory
+            .GetChild(slotIndex)
+            .GetComponent<UnityEngine.UI.Image>()
+            .sprite = defaultImage.sprite;
+
+        Destroy(playerInventory.GetChild(slotIndex).GetChild(0).gameObject);
     }
 }

@@ -36,11 +36,10 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public Transform inventorySlots;
 
-    [HideInInspector]
     int inventorySlotAmount;
 
     [HideInInspector]
-    int slotIndex = 0;
+    public int slotIndex = 0;
 
     [HideInInspector]
     public Transform slots;
