@@ -58,9 +58,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject
-            .Find("GameManager")
-            .GetComponent<GameManager>();
+        gameManager = FindObjectOfType<GameManager>();
         ui = gameManager.ui;
         healthBar = ui.Find("Health/health");
         healthBarEndPos = new Vector2(-healthBarEndOffset, 0);

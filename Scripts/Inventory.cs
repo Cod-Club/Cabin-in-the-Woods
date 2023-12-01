@@ -16,10 +16,7 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
-        gameManager = GameObject
-            .Find("GameManager")
-            .GetComponent<GameManager>();
-        gameManager = transform.GetComponent<Player>().gameManager;
+        gameManager = FindObjectOfType<GameManager>();
         inventorySlots = gameManager.ui.Find("Inventory");
     }
 

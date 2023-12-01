@@ -17,9 +17,7 @@ public class Door : MonoBehaviour
 
     void Start()
     {
-        gameManager = GameObject
-            .Find("GameManager")
-            .GetComponent<GameManager>();
+        gameManager = FindObjectOfType<GameManager>();
         fadeInOut = gameManager.GetComponent<FadeInOut>();
         door = gameManager.ui.Find("OpenDoor").gameObject;
     }
