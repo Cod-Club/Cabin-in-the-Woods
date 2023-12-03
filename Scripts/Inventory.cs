@@ -5,15 +5,13 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    [HideInInspector]
     GameManager gameManager;
 
     [HideInInspector]
     public Transform uiInventory;
-    public Transform playerInventory;
 
     [HideInInspector]
-    Transform emptySlot;
+    public Transform playerInventory;
 
     [SerializeField]
     UnityEngine.UI.Image defaultImage;
@@ -25,46 +23,39 @@ public class Inventory : MonoBehaviour
         playerInventory = transform.Find("Inventory");
     }
 
-    private void GetEmptySlot()
+    private int GetEmptySlotIndex()
     {
-        emptySlot = null;
-
-        foreach (Transform slot in uiInventory)
+        for (int i = 0; i < playerInventory.childCount; i++)
         {
-            if (
-                slot.GetComponent<UnityEngine.UI.Image>().sprite.name
-                == "Background"
-            )
-            {
-                emptySlot = slot;
-                break;
-            }
+            if (playerInventory.GetChild(i).childCount == 0)
+                return i;
         }
 
-        // Debug.Log(emptySlot.GetComponent<UnityEngine.UI.Image>().sprite.name);
+        return -1;
     }
 
     public void AddItem(Transform item)
     {
-        GetEmptySlot();
-        if (emptySlot == null)
+        int slotIndex = GetEmptySlotIndex();
+        if (slotIndex == -1)
             return;
 
-        // put item into hermits hand
-        item.SetParent(playerInventory.Find(emptySlot.name));
+        // add item to player inventory
+        item.SetParent(playerInventory.GetChild(slotIndex));
         item.localPosition = Vector3.zero;
+
+        // set image in UI inventory slot to item sprite
+        uiInventory
+            .GetChild(slotIndex)
+            .GetComponent<UnityEngine.UI.Image>()
+            .sprite = item.Find("Canvas/Image")
+            .GetComponent<UnityEngine.UI.Image>()
+            .sprite;
 
         // remove physics of item
         Destroy(item.GetComponent<Rigidbody2D>());
         item.GetComponent<BoxCollider2D>().enabled = false;
         item.GetComponent<BoxCollider2D>().enabled = false;
-
-        // set image in inventory slot to item sprite
-        emptySlot.GetComponent<UnityEngine.UI.Image>().sprite = item.Find(
-                "Canvas/Image"
-            )
-            .GetComponent<UnityEngine.UI.Image>()
-            .sprite;
     }
 
     public void RemoveItem(int slotIndex)
