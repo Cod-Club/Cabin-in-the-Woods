@@ -30,18 +30,14 @@ public class Door : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        SetDoorActive(other, true);
+        if (other.GetComponent<PlayerMovement>() != null)
+            door.SetActive(true);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        SetDoorActive(other, false);
-    }
-
-    private void SetDoorActive(Collider2D other, bool active)
-    {
         if (other.GetComponent<PlayerMovement>() != null)
-            door.SetActive(active);
+            door.SetActive(false);
     }
 
     public void OpenDoor()
