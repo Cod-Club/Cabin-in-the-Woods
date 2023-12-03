@@ -25,21 +25,18 @@ public class Player : MonoBehaviour
     public int startHealth;
 
     [HideInInspector]
-    public Transform interactableItem;
+    public List<Transform> interactables = new();
 
     [HideInInspector]
-    public Transform item;
+    public Transform activeInventorySlot;
+
+    [HideInInspector]
+    public int activeInventorySlotIndex;
 
     [HideInInspector]
     public float health;
 
-    [HideInInspector]
-    public Transform inventorySlots;
-
     int inventorySlotAmount;
-
-    [HideInInspector]
-    public int slotIndex = 0;
 
     [HideInInspector]
     public Transform slots;
@@ -59,12 +56,11 @@ public class Player : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         ui = gameManager.ui;
+        inventory = transform.GetComponent<Inventory>();
         healthBar = ui.Find("Health/health");
         healthBarEndPos = new Vector2(-healthBarEndOffset, 0);
-        inventorySlots = ui.Find("Inventory");
-        inventory = transform.GetComponent<Inventory>();
 
-        inventorySlotAmount = inventorySlots.childCount;
+        inventorySlotAmount = inventory.uiInventory.childCount;
         health = startHealth;
     }
 
@@ -74,12 +70,9 @@ public class Player : MonoBehaviour
         SetHealth();
         UpdateActiveInventorySlot();
 
-        if (interactableItem != null)
+        if (interactables.Count > 0 && Input.GetKeyDown(KeyCode.E))
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                inventory.AddItem(interactableItem.transform);
-            }
+            inventory.AddItem(interactables[0]);
         }
     }
 
@@ -94,6 +87,7 @@ public class Player : MonoBehaviour
 
     void UpdateActiveInventorySlot()
     {
+        int slotIndex = 0;
         for (int i = 0; i < inventorySlotAmount; i++)
         {
             if (Input.GetKeyDown(inventoryKeycodes[i]))
@@ -110,26 +104,23 @@ public class Player : MonoBehaviour
                 - Math.Sign(Input.mouseScrollDelta.y)
             ) % inventorySlotAmount;
 
-        if (
-            transform.Find("Inventory/" + slotIndex.ToString()).childCount != 0
-        )
-        {
-            item = transform.Find("Inventory").GetChild(slotIndex);
-        }
+        activeInventorySlot = transform.Find("Inventory").GetChild(slotIndex);
 
-        foreach (Transform slot in inventorySlots)
+        for (int i = 0; i < inventorySlotAmount; i++)
         {
-            slot.GetComponent<UnityEngine.UI.Image>().color = new Color(
+            inventory.uiInventory
+                .GetChild(i)
+                .GetComponent<UnityEngine.UI.Image>()
+                .color = new Color(
                 255f,
                 255f,
                 255f,
-                slot.name == slotIndex.ToString() ? 1f : 0.5f
+                i == slotIndex ? 1f : 0.5f
             );
-        }
 
-        foreach (Transform child in transform.Find("Inventory"))
-        {
-            child.gameObject.SetActive(child.name == slotIndex.ToString());
+            inventory.playerInventory
+                .GetChild(i)
+                .gameObject.SetActive(i == slotIndex);
         }
     }
 

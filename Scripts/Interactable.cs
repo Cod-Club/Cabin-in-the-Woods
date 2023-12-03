@@ -8,7 +8,7 @@ public class Interactable : MonoBehaviour
     {
         if (other.GetComponent<Player>() != null)
         {
-            other.GetComponent<Player>().interactableItem = transform;
+            other.GetComponent<Player>().interactables.Add(transform);
         }
     }
 
@@ -16,7 +16,7 @@ public class Interactable : MonoBehaviour
     {
         if (other.GetComponent<Player>() != null)
         {
-            other.GetComponent<Player>().interactableItem = null;
+            other.GetComponent<Player>().interactables.Remove(transform);
         }
     }
 }
