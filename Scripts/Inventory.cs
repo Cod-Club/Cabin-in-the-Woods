@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Unity.VisualStudio.Editor;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -66,5 +67,25 @@ public class Inventory : MonoBehaviour
             .sprite = defaultImage.sprite;
 
         Destroy(playerInventory.GetChild(slotIndex).GetChild(0).gameObject);
+    }
+
+    public Transform GetItem(int slotIndex)
+    {
+        Transform slot = playerInventory.GetChild(slotIndex);
+
+        if (slot.childCount == 0)
+            return null;
+
+        return slot.GetChild(0);
+    }
+
+    public string GetItemName(int slotIndex)
+    {
+        Transform item = GetItem(slotIndex);
+
+        if (item == null)
+            return null;
+
+        return item.name;
     }
 }
