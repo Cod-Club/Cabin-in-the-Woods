@@ -5,7 +5,6 @@ public class TimeManager : MonoBehaviour
 {
     Transform ui;
     TextMeshProUGUI timeText;
-    TextMeshProUGUI dayText;
     public int day = 1;
     float time;
     public int timeOfDay;
@@ -15,10 +14,7 @@ public class TimeManager : MonoBehaviour
     {
         ui = FindObjectOfType<GameManager>().ui;
         timeText = ui.transform
-            .Find("TimeInfo/Time")
-            .GetComponent<TextMeshProUGUI>();
-        dayText = ui.transform
-            .Find("TimeInfo/Day")
+            .Find("TimeInfo")
             .GetComponent<TextMeshProUGUI>();
     }
 
@@ -30,13 +26,14 @@ public class TimeManager : MonoBehaviour
         if (timeOfDay >= 1200)
         {
             time = 0;
-            dayText.text = (++day).ToString();
+            day++;
         }
 
         timeText.text = string.Format(
-            "{0}:{1}",
+            "{0:D2}:{1:D2} Day {2}",
             timeOfDay / 60,
-            timeOfDay % 60
+            timeOfDay % 60,
+            day
         );
     }
 }
