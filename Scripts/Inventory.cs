@@ -65,9 +65,11 @@ public class Inventory : MonoBehaviour
             .sprite;
 
         // remove physics of item
-        Destroy(item.GetComponent<Rigidbody2D>());
-        item.GetComponent<BoxCollider2D>().enabled = false;
-        item.GetComponent<BoxCollider2D>().enabled = false;
+        item.GetComponent<Rigidbody2D>().isKinematic = true;
+        foreach (
+            BoxCollider2D component in item.GetComponents<BoxCollider2D>()
+        )
+            component.enabled = false;
     }
 
     public void DropItem()
@@ -76,8 +78,12 @@ public class Inventory : MonoBehaviour
 
         // return item to world
         item.parent = null;
-        item.AddComponent<Rigidbody2D>();
-        item.AddComponent<BoxCollider2D>();
+        // item.AddComponent<Rigidbody2D>();
+        item.GetComponent<Rigidbody2D>().isKinematic = false;
+        foreach (
+            BoxCollider2D component in item.GetComponents<BoxCollider2D>()
+        )
+            component.enabled = true;
 
         // remove item image from UI inventory
         uiInventory
