@@ -103,17 +103,26 @@ public class Inventory : MonoBehaviour
 
     public void UpdateActiveInventorySlot()
     {
-        int activeSlotIndex = 0;
-        for (int i = 0; i < playerInventory.childCount; i++)
-        {
-            if (Input.GetKeyDown(inventoryKeycodes[i]))
-            {
-                activeSlotIndex = i;
-                break;
-            }
-        }
+        int slotAmount = playerInventory.childCount;
 
-        for (int i = 0; i < playerInventory.childCount; i++)
+        // update active slot if up/down arrow key is pressed
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+            activeSlotIndex = (activeSlotIndex + 1) % slotAmount;
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+            activeSlotIndex = (slotAmount + activeSlotIndex - 1) % slotAmount;
+        else
+            // update active slot if corresponding number key is pressed
+            for (int i = 0; i < slotAmount; i++)
+            {
+                if (Input.GetKeyDown(inventoryKeycodes[i]))
+                {
+                    activeSlotIndex = i;
+                    break;
+                }
+            }
+
+        // update image in UI inventory and gameobjects in player inventory
+        for (int i = 0; i < slotAmount; i++)
         {
             uiInventory
                 .GetChild(i)
