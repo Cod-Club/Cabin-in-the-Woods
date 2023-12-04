@@ -8,17 +8,15 @@ public class Interactable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<Player>() != null)
-        {
-            other.GetComponent<Player>().interactables.Add(transform);
-        }
+        Player player = other.GetComponent<Player>();
+        if (player)
+            player.interactables.Add(transform);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.GetComponent<Player>() != null)
-        {
-            other.GetComponent<Player>().interactables.Remove(transform);
-        }
+        Player player = other.GetComponent<Player>();
+        if (player)
+            player.interactables.Remove(transform);
     }
 }
