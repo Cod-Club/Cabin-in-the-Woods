@@ -98,7 +98,7 @@ public class Inventory : MonoBehaviour
         if (item == null)
             return null;
 
-        return item.name;
+        return item.GetComponent<Interactable>().id;
     }
 
     public void UpdateActiveInventorySlot()

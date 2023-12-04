@@ -80,6 +80,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6777084443562413599, guid: f5a54222f63a51442bb0dc133fdd39b8, type: 3}
+      propertyPath: id
+      value: Stick
+      objectReference: {fileID: 0}
     - target: {fileID: 9119649991217355614, guid: f5a54222f63a51442bb0dc133fdd39b8, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
       value: 0.5
