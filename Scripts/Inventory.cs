@@ -16,6 +16,16 @@ public class Inventory : MonoBehaviour
 
     [SerializeField]
     UnityEngine.UI.Image defaultImage;
+    readonly KeyCode[] inventoryKeycodes =
+    {
+        KeyCode.Alpha1,
+        KeyCode.Alpha2,
+        KeyCode.Alpha3,
+        KeyCode.Alpha4,
+        KeyCode.Alpha5,
+        KeyCode.Alpha6
+    };
+    public int activeSlotIndex = 0;
 
     void Start()
     {
@@ -37,17 +47,17 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(Transform item)
     {
-        int slotIndex = GetEmptySlotIndex();
-        if (slotIndex == -1)
+        int activeSlotIndex = GetEmptySlotIndex();
+        if (activeSlotIndex == -1)
             return;
 
         // add item to player inventory
-        item.SetParent(playerInventory.GetChild(slotIndex));
+        item.SetParent(playerInventory.GetChild(activeSlotIndex));
         item.localPosition = Vector3.zero;
 
         // set image in UI inventory slot to item sprite
         uiInventory
-            .GetChild(slotIndex)
+            .GetChild(activeSlotIndex)
             .GetComponent<UnityEngine.UI.Image>()
             .sprite = item.Find("Canvas/Image")
             .GetComponent<UnityEngine.UI.Image>()
@@ -59,19 +69,21 @@ public class Inventory : MonoBehaviour
         item.GetComponent<BoxCollider2D>().enabled = false;
     }
 
-    public void RemoveItem(int slotIndex)
+    public void RemoveItem(int activeSlotIndex)
     {
         uiInventory
-            .GetChild(slotIndex)
+            .GetChild(activeSlotIndex)
             .GetComponent<UnityEngine.UI.Image>()
             .sprite = defaultImage.sprite;
 
-        Destroy(playerInventory.GetChild(slotIndex).GetChild(0).gameObject);
+        Destroy(
+            playerInventory.GetChild(activeSlotIndex).GetChild(0).gameObject
+        );
     }
 
-    public Transform GetItem(int slotIndex)
+    public Transform GetItem(int activeSlotIndex)
     {
-        Transform slot = playerInventory.GetChild(slotIndex);
+        Transform slot = playerInventory.GetChild(activeSlotIndex);
 
         if (slot.childCount == 0)
             return null;
@@ -79,13 +91,43 @@ public class Inventory : MonoBehaviour
         return slot.GetChild(0);
     }
 
-    public string GetItemName(int slotIndex)
+    public string GetItemName(int activeSlotIndex)
     {
-        Transform item = GetItem(slotIndex);
+        Transform item = GetItem(activeSlotIndex);
 
         if (item == null)
             return null;
 
         return item.name;
+    }
+
+    public void UpdateActiveInventorySlot()
+    {
+        int activeSlotIndex = 0;
+        for (int i = 0; i < playerInventory.childCount; i++)
+        {
+            if (Input.GetKeyDown(inventoryKeycodes[i]))
+            {
+                activeSlotIndex = i;
+                break;
+            }
+        }
+
+        for (int i = 0; i < playerInventory.childCount; i++)
+        {
+            uiInventory
+                .GetChild(i)
+                .GetComponent<UnityEngine.UI.Image>()
+                .color = new Color(
+                255f,
+                255f,
+                255f,
+                i == activeSlotIndex ? 1f : 0.5f
+            );
+
+            playerInventory
+                .GetChild(i)
+                .gameObject.SetActive(i == activeSlotIndex);
+        }
     }
 }
