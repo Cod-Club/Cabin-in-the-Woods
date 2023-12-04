@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Unity.VisualStudio.Editor;
+using Unity.VisualScripting;
 using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.UI;
@@ -69,7 +70,23 @@ public class Inventory : MonoBehaviour
         item.GetComponent<BoxCollider2D>().enabled = false;
     }
 
-    public void RemoveItem(int activeSlotIndex)
+    public void DropItem()
+    {
+        Transform item = GetItem(activeSlotIndex);
+
+        // return item to world
+        item.parent = null;
+        item.AddComponent<Rigidbody2D>();
+        item.AddComponent<BoxCollider2D>();
+
+        // remove item image from UI inventory
+        uiInventory
+            .GetChild(activeSlotIndex)
+            .GetComponent<UnityEngine.UI.Image>()
+            .sprite = defaultImage.sprite;
+    }
+
+    public void DeleteItem(int activeSlotIndex)
     {
         uiInventory
             .GetChild(activeSlotIndex)

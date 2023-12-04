@@ -52,6 +52,9 @@ public class Player : MonoBehaviour
         {
             inventory.AddItem(interactables[0]);
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+            inventory.DropItem();
     }
 
     void SetHealth()
