@@ -247,12 +247,8 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   healthBarEndOffset: 144
   startHealth: 100
-  interactableItem: {fileID: 0}
-  item: {fileID: 0}
+  interactables: []
   health: 0
-  inventorySlots: {fileID: 0}
-  slotIndex: 0
-  slots: {fileID: 0}
 --- !u!114 &1835556168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,7 +276,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiInventory: {fileID: 0}
   playerInventory: {fileID: 0}
-  defaultImage: {fileID: 0}
+  defaultSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  activeSlotIndex: 0
 --- !u!1 &6554911219970407844
 GameObject:
   m_ObjectHideFlags: 0
