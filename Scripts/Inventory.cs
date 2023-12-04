@@ -76,6 +76,9 @@ public class Inventory : MonoBehaviour
     {
         Transform item = GetItem(activeSlotIndex);
 
+        if (item == null)
+            return;
+
         // return item to world
         item.parent = null;
         item.GetComponent<Rigidbody2D>().isKinematic = false;
