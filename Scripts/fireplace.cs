@@ -17,19 +17,20 @@ public class Fireplace : MonoBehaviour
     {
         Player player = other.GetComponent<Player>();
 
-        if (player && Input.GetKeyDown(KeyCode.F))
-        {
-            int activeInventorySlotIndex = player.inventory.activeSlotIndex;
+        if (!player)
+            return;
 
-            if (
-                player.inventory.GetItemName(activeInventorySlotIndex)
+        int activeInventorySlotIndex = player.inventory.activeSlotIndex;
+
+        if (
+            Input.GetKeyDown(KeyCode.F)
+            && player.inventory.GetItemName(activeInventorySlotIndex)
                 == "Stick"
-            )
-            {
-                Debug.Log("Placing stick");
-                sticks++;
-                player.inventory.DeleteItem(activeInventorySlotIndex);
-            }
+        )
+        {
+            Debug.Log("Placing stick");
+            sticks++;
+            player.inventory.DeleteItem(activeInventorySlotIndex);
         }
     }
 
