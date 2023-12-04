@@ -52,6 +52,9 @@ public class Door : MonoBehaviour
         fadeInOut.Fade();
 
         gameManager.sceneToLoad = sceneToLoad;
-        gameManager.Invoke("LoadScene", fadeInOut.fadeDuration);
+        gameManager.Invoke(
+            nameof(gameManager.LoadScene),
+            fadeInOut.fadeDuration
+        );
     }
 }

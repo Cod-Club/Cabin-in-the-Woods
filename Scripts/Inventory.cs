@@ -16,7 +16,7 @@ public class Inventory : MonoBehaviour
     public Transform playerInventory;
 
     [SerializeField]
-    UnityEngine.Sprite defaultSprite;
+    Sprite defaultSprite;
     readonly KeyCode[] inventoryKeycodes =
     {
         KeyCode.Alpha1,
@@ -78,7 +78,6 @@ public class Inventory : MonoBehaviour
 
         // return item to world
         item.parent = null;
-        // item.AddComponent<Rigidbody2D>();
         item.GetComponent<Rigidbody2D>().isKinematic = false;
         foreach (
             BoxCollider2D component in item.GetComponents<BoxCollider2D>()
