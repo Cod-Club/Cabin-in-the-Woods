@@ -3,39 +3,51 @@ using UnityEngine;
 public class Fireplace : MonoBehaviour
 {
     GameManager gameManager;
+    Player player;
     int sticks = 0;
+    bool isTouchingPlayer = false;
     bool on = false;
 
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        player = FindObjectOfType<Player>();
 
         BurnStick();
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        Player player = other.GetComponent<Player>();
+        if (other.GetComponent<Player>())
+            isTouchingPlayer = true;
+    }
 
-        if (!player)
-            return;
-
-        int activeInventorySlotIndex = player.inventory.activeSlotIndex;
-
-        if (
-            Input.GetKeyDown(KeyCode.F)
-            && player.inventory.GetItemName(activeInventorySlotIndex)
-                == "Stick"
-        )
-        {
-            Debug.Log("Placing stick");
-            sticks++;
-            player.inventory.DeleteItem(activeInventorySlotIndex);
-        }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.GetComponent<Player>())
+            isTouchingPlayer = false;
     }
 
     private void Update()
     {
+        // place stick
+        if (isTouchingPlayer)
+        {
+            int activeInventorySlotIndex = player.inventory.activeSlotIndex;
+
+            if (
+                Input.GetKeyDown(KeyCode.F)
+                && player.inventory.GetItemName(activeInventorySlotIndex)
+                    == "Stick"
+            )
+            {
+                Debug.Log("Placing stick");
+                sticks++;
+                player.inventory.DeleteItem(activeInventorySlotIndex);
+            }
+        }
+
+        // burn stick
         if (!on && sticks == 5)
         {
             on = true;
