@@ -6,13 +6,10 @@ public class Door : MonoBehaviour
 {
     public string sceneToLoad;
 
-    [HideInInspector]
     GameManager gameManager;
 
-    [HideInInspector]
     FadeInOut fadeInOut;
 
-    [HideInInspector]
     GameObject door;
 
     void Start()

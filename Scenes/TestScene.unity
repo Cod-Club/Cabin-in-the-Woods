@@ -803,10 +803,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -6399588281200847129, guid: d40b96297b1af07a7a6b808475b98b52, type: 3}
-      propertyPath: defaultSprite
-      value: 
-      objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 1835556167, guid: d40b96297b1af07a7a6b808475b98b52, type: 3}
       propertyPath: gameManager
       value: 
@@ -868,118 +864,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 168007423, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 168007423, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 285931993, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 285931993, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 609792010, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 609792010, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1544318375, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1544318375, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1544318375, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1544318375, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1544318375, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -830.0001
-      objectReference: {fileID: 0}
-    - target: {fileID: 1544318375, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1544318375, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -235.00006
-      objectReference: {fileID: 0}
-    - target: {fileID: 1544318375, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -125
-      objectReference: {fileID: 0}
-    - target: {fileID: 1658464711, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 1658464711, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1729595109, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 1729595109, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761726362, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761726362, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761726362, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761726362, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761726362, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -435
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761726362, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -310
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761726362, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -145
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133007104, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 2133007104, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1214047168866953869, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_text
-      value: day 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2978913985664362178, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -987,10 +871,6 @@ PrefabInstance:
     - target: {fileID: 2978913985664362178, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2978913985664362178, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2978913985664362178, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1069,17 +949,9 @@ PrefabInstance:
       value: UI
       objectReference: {fileID: 0}
     - target: {fileID: 2978913986724510388, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2978913986724510388, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 650910353}
-    - target: {fileID: 2978913986724510388, guid: 1bc79a56aa0fda845aebd0f4f9ae1e91, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenDoor
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -6,11 +6,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    [HideInInspector]
-    public GameManager gameManager;
-
-    [HideInInspector]
-    public Transform ui;
+    GameManager gameManager;
 
     [HideInInspector]
     public Inventory inventory;
@@ -34,9 +30,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
-        ui = gameManager.ui;
         inventory = transform.GetComponent<Inventory>();
-        healthBar = ui.Find("Health/health");
+        healthBar = gameManager.ui.Find("Health/health");
         healthBarEndPos = new Vector2(-healthBarEndOffset, 0);
 
         health = startHealth;
