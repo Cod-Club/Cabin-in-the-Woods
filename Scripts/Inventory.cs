@@ -16,7 +16,7 @@ public class Inventory : MonoBehaviour
     public Transform playerInventory;
 
     [SerializeField]
-    UnityEngine.UI.Image defaultImage;
+    UnityEngine.Sprite defaultSprite;
     readonly KeyCode[] inventoryKeycodes =
     {
         KeyCode.Alpha1,
@@ -83,7 +83,7 @@ public class Inventory : MonoBehaviour
         uiInventory
             .GetChild(activeSlotIndex)
             .GetComponent<UnityEngine.UI.Image>()
-            .sprite = defaultImage.sprite;
+            .sprite = defaultSprite;
     }
 
     public void DeleteItem(int activeSlotIndex)
@@ -91,7 +91,7 @@ public class Inventory : MonoBehaviour
         uiInventory
             .GetChild(activeSlotIndex)
             .GetComponent<UnityEngine.UI.Image>()
-            .sprite = defaultImage.sprite;
+            .sprite = defaultSprite;
 
         Destroy(
             playerInventory.GetChild(activeSlotIndex).GetChild(0).gameObject
