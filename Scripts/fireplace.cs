@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class fireplace : MonoBehaviour
+public class Fireplace : MonoBehaviour
 {
     GameManager gameManager;
     int sticks = 0;
