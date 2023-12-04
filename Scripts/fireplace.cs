@@ -56,6 +56,6 @@ public class fireplace : MonoBehaviour
         }
 
         Debug.Log(sticks);
-        Invoke("BurnStick", 20f);
+        Invoke(nameof(BurnStick), 20f);
     }
 }
