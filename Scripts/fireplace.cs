@@ -9,21 +9,26 @@ public class fireplace : MonoBehaviour
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+
         BurnStick();
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.GetComponent<Player>())
+        Player player = other.GetComponent<Player>();
+
+        if (player && Input.GetKeyDown(KeyCode.F))
         {
-            Player player = other.GetComponent<Player>();
+            int activeInventorySlotIndex = player.inventory.activeSlotIndex;
+
             if (
-                player.interactableItem.name == "stick"
-                && Input.GetKeyDown(KeyCode.E)
+                player.inventory.GetItemName(activeInventorySlotIndex)
+                == "Stick"
             )
             {
+                Debug.Log("Placing stick");
                 sticks++;
-                player.inventory.RemoveItem(player.slotIndex);
+                player.inventory.DeleteItem(activeInventorySlotIndex);
             }
         }
     }
@@ -47,8 +52,10 @@ public class fireplace : MonoBehaviour
         if (on)
         {
             sticks = Mathf.Max(sticks - 1, 0);
+            Debug.Log("Burning stick");
         }
 
+        Debug.Log(sticks);
         Invoke("BurnStick", 20f);
     }
 }
