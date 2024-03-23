@@ -5,14 +5,17 @@ A hermit survives the harsh winter in the woods.
 ## Credits
 
 **Game Design:**
+
 - Zac Hart
 - Koby Archer
 
 **Scripting:**
+
 - Zac Hart
 - Koby Archer
 
 **Art:**
+
 - Adam Paicu
 
 ## Contact Us
